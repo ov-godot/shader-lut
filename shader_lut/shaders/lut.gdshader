@@ -5,7 +5,7 @@ uniform sampler2D lut_texture : source_color, filter_linear_mipmap;
 uniform vec2 lut_grid = vec2(8.0, 8.0);
 
 void fragment() {
-	vec4 screen_texel = texture(screen_texture, SCREEN_UV);
+    vec4 screen_texel = texture(screen_texture, SCREEN_UV);
     if (!lut_enabled) COLOR = vec4(0);
     else {
         float index = screen_texel.b*((lut_grid.x*lut_grid.y) - 1.0);
