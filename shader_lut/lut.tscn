@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgc1vwfs56lg6"]
+
+[ext_resource type="Shader" uid="uid://ciwefbhv5qr63" path="res://shader_lut/shaders/lut.gdshader" id="1_6kela"]
+[ext_resource type="Texture2D" uid="uid://chpdee6tsxwk" path="res://shader_lut/textures/Neutral.png" id="2_unnmx"]
+[ext_resource type="Script" uid="uid://bc237che2rm1e" path="res://shader_lut/lut.gd" id="3_unnmx"]
+[ext_resource type="Script" uid="uid://b2d7cnsc5sab5" path="res://shader_lut/debug.gd" id="4_67oii"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wu5n8"]
+shader = ExtResource("1_6kela")
+shader_parameter/lut_enabled = true
+shader_parameter/lut_texture = ExtResource("2_unnmx")
+shader_parameter/lut_grid = Vector2(8, 8)
+
+[node name="Shader Lut" type="Node"]
+
+[node name="Container" type="CanvasLayer" parent="."]
+
+[node name="Rect" type="ColorRect" parent="Container"]
+material = SubResource("ShaderMaterial_wu5n8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_unnmx")
+metadata/_edit_use_anchors_ = true
+
+[node name="Controller" type="Control" parent="Container/Rect"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_67oii")
